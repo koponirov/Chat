@@ -1,0 +1,13 @@
+@import "~antd/dist/antd.css";
+@import "src/assets/fonts/fonts";
+
+
+
+body, html, #root, .wrapper {
+  height: 100%;
+  color: #202020;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
