@@ -1,17 +1,15 @@
 import React from 'react';
-import {Block, Button} from "../../components";
+import { LoginForm, RegisterForm } from 'modules';
+
 import './Auth.scss'
+
+import { Route } from 'react-router-dom'
 
 const Auth = () => (
     <section className='auth'>
         <div className='auth__content'>
-            <div className="auth__top">
-                <h2>Войдите в аккаунт</h2>
-                <p>Пожалуйста, войдите в свой аккаунт</p>
-            </div>
-            <Block>
-                <Button className='button__large' type='primary' size='large'>click</Button>
-            </Block>
+            <Route exact path={['/','/login']} component={LoginForm}/>
+            <Route exact path={['/register']} component={RegisterForm}/>
         </div>
 
     </section>
