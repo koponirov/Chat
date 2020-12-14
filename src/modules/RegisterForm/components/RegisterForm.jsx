@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from "../../components";
-import './Auth.scss'
+import { Block, Button } from "../../../components";
 import { Form, Input } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom'
 
-export const LoginForm = () => {
+
+export const RegisterForm = () => {
     return (
         <>
             <div className="auth__top">

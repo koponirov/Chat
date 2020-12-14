@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginForm, RegisterForm } from 'modules';
+import { LoginForm, RegisterForm } from '../../modules/';
 
 import './Auth.scss'
 
