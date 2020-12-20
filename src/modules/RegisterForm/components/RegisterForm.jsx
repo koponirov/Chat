@@ -5,9 +5,20 @@ import {Form, Input} from 'antd';
 import {UserOutlined, LockOutlined, MailOutlined, InfoCircleTwoTone } from '@ant-design/icons';
 
 
-export const RegisterForm = () => {
+export const RegisterForm = (props) => {
+    debugger
 
     const success = true
+
+    const {
+        values,
+        touched,
+        errors,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        isSubmitting
+    } = props;
 
     return (
         <div>
@@ -19,36 +30,67 @@ export const RegisterForm = () => {
             <Block>
                 {success
                     ?
-                    <Form>
-                        <Form.Item
-                            name="login"
-                        >
-                            <Input size="large" placeholder="логин" prefix={<UserOutlined/>}/>
-                        </Form.Item>
+
+                    <Form onSubmit={handleSubmit}>
 
                         <Form.Item
                             name="email"
+                            validateStatus={!touched.email ? "" : errors.email ? "error" : "success"}
+                            hasFeedback
+                            help={!touched.email ? "" : errors.email}
                         >
-                            <Input size="large" placeholder="почта" prefix={<MailOutlined/>}/>
+                            <Input
+                                id='email'
+                                size="large"
+                                placeholder="почта"
+                                prefix={<MailOutlined/>}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                            />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="login"
+                        >
+                            <Input size="large" placeholder="логин" prefix={<UserOutlined/>} />
                         </Form.Item>
 
                         <Form.Item
                             name="password"
+                            validateStatus={!touched.password ? "" : errors.password ? "error" : "success"}
+                            hasFeedback
+                            help={!touched.password ? "" : errors.password}
                         >
-                            <Input.Password size="large" placeholder="пароль" prefix={<LockOutlined/>}/>
+                            <Input.Password
+                                id='password'
+                                size="large"
+                                placeholder="пароль"
+                                prefix={<LockOutlined/>}
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                            />
                         </Form.Item>
 
                         <Form.Item
-                            name="password"
+                            name="confirmpassword"
                         >
-                            <Input.Password size="large" placeholder="подтвердите пароль" prefix={<LockOutlined/>}/>
+                            <Input.Password
+
+                                size="large"
+                                placeholder="подтвердите пароль"
+                                prefix={<LockOutlined/>}
+
+                            />
                         </Form.Item>
 
                         <Form.Item>
                             <Button
                                 className='button__large'
+                                onClick={handleSubmit}
                                 type='primary'
-                                size='large'>
+                                size='large'
+                                disabled={isSubmitting}
+                            >
                                 зарегистрироваться
                             </Button>
                         </Form.Item>
